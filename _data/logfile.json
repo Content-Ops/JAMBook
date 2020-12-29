@@ -1,0 +1,42 @@
+[
+  {
+    "name": "2020-10-10-cool-post-copy",
+    "initialWords": 94,
+    "2020-12-29T21:51:53.941Z": {
+      "diff": 2,
+      "currentWords": 96
+    },
+    "2020-12-29T21:52:02.972Z": {
+      "diff": 8,
+      "currentWords": 104
+    },
+    "2020-12-29T21:52:59.518Z": {
+      "diff": -2,
+      "currentWords": 102
+    }
+  },
+  {
+    "name": "2020-11-11-cool-post",
+    "initialWords": 101,
+    "2020-12-29T21:51:32.230Z": {
+      "diff": -3,
+      "currentWords": 98
+    },
+    "2020-12-29T21:51:38.144Z": {
+      "diff": -3,
+      "currentWords": 95
+    },
+    "2020-12-29T21:51:44.320Z": {
+      "diff": 3,
+      "currentWords": 98
+    },
+    "2020-12-29T21:51:48.137Z": {
+      "diff": -1,
+      "currentWords": 97
+    },
+    "2020-12-29T21:52:59.523Z": {
+      "diff": 2,
+      "currentWords": 99
+    }
+  }
+]

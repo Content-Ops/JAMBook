@@ -4,3 +4,12 @@
 
 layout: home
 ---
+
+<ul>
+{% for file in site.data.logfile %}
+  <li>
+      {{ file.name}} -> {{ file.initialWords}}
+  </li>
+{% endfor %}
+
+</ul>
