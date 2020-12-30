@@ -1,45 +1,32 @@
 <script>
-  import hey from "../../logfile.json";
-  import { Calendar } from "@fullcalendar/core";
-  import dayGridPlugin from "@fullcalendar/daygrid";
-  import { onMount } from "svelte";
-  import isSameDay from "date-fns/isSameDay";
-
-  let wordsPerDay = 100;
-  let documentTargetLength = 200;
-
-  // let hasWrittenToday = isSameDay(
-  //   new Date(2014, 8, 4, 6, 0),
-  //   new Date(2014, 8, 4, 18, 0)
-  // );
+  import { onMount } from 'svelte';
+  import logfile from '../../logfile.json';
+  import CustomFullCalendar from '../components/CustomFullCalendar.svelte';
+  import DayDetailView from '../components/DayDetailView.svelte';
+  import WordCountDetailView from '../components/WordCountDetailView.svelte';
+  import { fileCounts } from '../stores';
 
   onMount(() => {
-    var calendarEl = document.getElementById("calendar");
-
-    var calendar = new Calendar(calendarEl, {
-      plugins: [dayGridPlugin],
-    });
-
-    calendar.render();
+    fileCounts.set(logfile);
   });
 </script>
 
-<label>
-  <div>Words per day</div>
-  <input type="number" bind:value={wordsPerDay} min="0" />
-</label>
+<svelte:head>
+  <title>Word count per day</title>
+</svelte:head>
 
-<label>
-  <div>Document target length</div>
-  <input type="number" bind:value={documentTargetLength} min="0" />
-</label>
+<div class="container">
+  <div class="flex flex-wrap -m-2">
+    <div class="w-full p-2 md:w-1/2">
+      <CustomFullCalendar />
+    </div>
 
-<br />
-<br />
+    <div class="w-full p-2 md:w-1/2">
+      <DayDetailView />
+    </div>
 
-{#each Object.entries(hey) as [cat_key, cat_val]}
-  <div>{cat_key}</div>
-  <progress value={cat_val.initialWords} max={documentTargetLength} />
-{/each}
-
-<div id="calendar" />
+    <div class="w-full p-2">
+      <WordCountDetailView />
+    </div>
+  </div>
+</div>

@@ -1,15 +1,21 @@
 {
   "2020-10-10-cool-post-copy": {
-    "initialWords": 102
-  },
-  "2020-11-11-cool-post": {
-    "initialWords": 99,
-    "2020-12-29T22:21:02.041Z": {
-      "diff": -9,
-      "currentWords": 90
+    "2020-12-30T13:19:35.891Z": {
+      "currentWords": 97
+    },
+    "2020-12-30T13:19:44.884Z": {
+      "diff": -2,
+      "currentWords": 95
     }
   },
   "2020-11-11-cool-post-test": {
-    "initialWords": 30
+    "2020-12-30T13:19:35.892Z": {
+      "currentWords": 30
+    }
+  },
+  "2020-11-11-cool-post": {
+    "2020-12-30T13:19:35.895Z": {
+      "currentWords": 90
+    }
   }
 }
