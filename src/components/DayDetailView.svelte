@@ -1,18 +1,41 @@
 <script>
   import { selectedDateStr, selectedDate } from '../stores';
-  import isSameDay from 'date-fns/isSameDay';
+  import { formatDate } from '../helpers';
+  import logfile from '../../logfile.json';
 
-  // let hasWrittenToday = null;
+  let filesWithNewWordCount = [];
 
-  // $: hasWrittenToday = isSameDay(new Date(), new Date($selectedDate));
+  $: Object.entries(logfile).map(([filename, timestampKeys]) => {
+    let foundTimestamp = Object.keys(timestampKeys)
+      .sort((a, b) => (a > b ? -1 : a < b ? 1 : 0))
+      .find((value) => value.includes($selectedDateStr));
+    if (foundTimestamp) {
+      filesWithNewWordCount = [
+        ...filesWithNewWordCount,
+        { [filename]: timestampKeys[foundTimestamp] },
+      ];
+    } else {
+      filesWithNewWordCount = [];
+    }
+  });
+
+  $: formattedDate = $selectedDate
+    ? formatDate($selectedDate)
+    : 'No date selected';
 </script>
 
 <div class="card">
-  <h2>DETAIL VIEW</h2>
+  <h2>Detail view</h2>
 
   {#if $selectedDate}
-    <p>{$selectedDateStr}</p>
-    <p>{$selectedDate}</p>
+    <p>{formattedDate}</p>
+
+    {#if filesWithNewWordCount.length > 0}
+      {#each Object.entries(filesWithNewWordCount) as [_filename, timestampKeys]}
+        <h3>{Object.keys(timestampKeys)}</h3>
+        <p>{timestampKeys[Object.keys(timestampKeys)].diff}</p>
+      {/each}
+    {:else}No file changes found{/if}
   {:else}
     <p>No day selected</p>
   {/if}

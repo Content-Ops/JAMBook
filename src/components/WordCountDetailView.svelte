@@ -1,34 +1,48 @@
 <script>
-  import { fileCounts } from '../stores';
+  import logfile from '../../logfile.json';
+  import { onMount } from 'svelte';
+  import { documentTargetLength, wordsPerDay } from '../stores';
 
-  let wordsPerDay = 100;
-  let documentTargetLength = 200;
+  let entryWithWords = [];
+
+  onMount(() => {
+    Object.entries(logfile).map(([filename, timestampKeys]) => {
+      let newestTimestamp = Object.keys(timestampKeys)[
+        Object.keys(timestampKeys).length - 1
+      ];
+      entryWithWords = [
+        ...entryWithWords,
+        { [filename]: timestampKeys[newestTimestamp] },
+      ];
+    });
+  });
 </script>
 
 <div class="flex card">
   <div class="w-1/2 p-2">
     <label>
       <div>Words per day</div>
-      <input type="number" bind:value="{wordsPerDay}" min="1" />
+      <input type="number" bind:value="{$wordsPerDay}" min="1" />
     </label>
 
     <label>
       <div>Document target length</div>
-      <input type="number" bind:value="{documentTargetLength}" min="1" />
+      <input type="number" bind:value="{$documentTargetLength}" min="1" />
     </label>
   </div>
 
-  <!-- <div class="w-1/2 p-2">
-    {#if $fileCounts}
-      {#each Object.entries($fileCounts) as [cat_key, cat_val]}
-        {console.log(cat_key, cat_val)}
-        <div>{cat_key}</div>
+  <div class="w-1/2 p-2">
+    {#if entryWithWords.length > 0}
+      {#each Object.entries(entryWithWords) as [_filename, timestampKeys]}
+        <div>{Object.keys(timestampKeys)}</div>
         <progress
-          value="{cat_val.currentWords}"
-          max="{documentTargetLength}"
+          value="{timestampKeys[Object.keys(timestampKeys)].currentWords}"
+          max="{$documentTargetLength}"
         ></progress>
-        {#if cat_val.currentWords >= documentTargetLength}Youre a boss!{/if}
+        {#if timestampKeys[Object.keys(timestampKeys)].currentWords >= $documentTargetLength}
+          Youre a boss!
+        {/if}
       {/each}
     {/if}
-  </div> -->
+  </div>
 </div>

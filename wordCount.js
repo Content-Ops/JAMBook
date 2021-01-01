@@ -37,6 +37,7 @@ glob(
           ...parsedFile,
           [fileName]: {
             [newFileTimestamp]: {
+              diff: initialWordCount,
               currentWords: initialWordCount,
             },
           },
