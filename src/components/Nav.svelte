@@ -2,6 +2,24 @@
   export let segment;
 </script>
 
+<nav>
+  <ul>
+    <li>
+      <a
+        aria-current="{segment === undefined ? 'page' : undefined}"
+        href="."
+      >Dashboard</a>
+    </li>
+    <li>
+      <a
+        rel="prefetch"
+        aria-current="{segment === 'blog' ? 'page' : undefined}"
+        href="blog"
+      >Blog</a>
+    </li>
+  </ul>
+</nav>
+
 <style>
   nav {
     border-bottom: 1px solid rgba(255, 62, 0, 0.1);
@@ -16,7 +34,7 @@
 
   /* clearfix */
   ul::after {
-    content: "";
+    content: '';
     display: block;
     clear: both;
   }
@@ -33,7 +51,7 @@
 
   [aria-current]::after {
     position: absolute;
-    content: "";
+    content: '';
     width: calc(100% - 1em);
     height: 2px;
     background-color: rgb(255, 62, 0);
@@ -47,19 +65,3 @@
     display: block;
   }
 </style>
-
-<nav>
-  <ul>
-    <li>
-      <a
-        aria-current={segment === undefined ? 'page' : undefined}
-        href=".">home</a>
-    </li>
-    <li>
-      <a
-        rel="prefetch"
-        aria-current={segment === 'blog' ? 'page' : undefined}
-        href="blog">blog</a>
-    </li>
-  </ul>
-</nav>

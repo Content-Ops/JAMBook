@@ -39,7 +39,10 @@
     "autoprefixer": "^10.1.0",
     "cssnano": "^4.1.10",
     "date-fns": "^2.16.1",
+    "front-matter": "^4.0.2",
     "glob": "^7.1.6",
+    "js-cookie": "^2.2.1",
+    "marked": "^1.2.7",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.2.2",
     "postcss-cli": "^8.3.1",
@@ -52,6 +55,7 @@
     "sapper": "^0.28.0",
     "svelte": "^3.17.3",
     "svelte-fullcalendar": "^1.1.0",
+    "svelte-previous": "^2.0.0",
     "tailwindcss": "^2.0.2"
   }
 }

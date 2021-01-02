@@ -1,21 +1,34 @@
 <script>
-  import { selectedDateStr, selectedDate } from '../stores';
+  import { selectedDateStr, selectedDate, wordsPerDay } from '../stores';
   import { formatDate } from '../helpers';
   import logfile from '../../logfile.json';
+  import { usePrevious } from 'svelte-previous';
 
   let filesWithNewWordCount = [];
 
+  let totalWordsWrittenPerDay = 0;
+
+  const [currentDateStr, previousDateStr] = usePrevious($selectedDateStr);
+
+  $: $currentDateStr = $selectedDateStr;
+
+  $: if ($previousDateStr && $currentDateStr !== $previousDateStr) {
+    filesWithNewWordCount = [];
+    totalWordsWrittenPerDay = 0;
+  }
+
   $: Object.entries(logfile).map(([filename, timestampKeys]) => {
-    let foundTimestamp = Object.keys(timestampKeys)
-      .sort((a, b) => (a > b ? -1 : a < b ? 1 : 0))
-      .find((value) => value.includes($selectedDateStr));
-    if (foundTimestamp) {
+    let foundTimestamps = Object.keys(timestampKeys)
+      // We want to make sure to show the file diffs in chronological order
+      .sort()
+      .filter((value) => value.includes($selectedDateStr));
+
+    for (let i = 0; i < foundTimestamps.length; i++) {
       filesWithNewWordCount = [
         ...filesWithNewWordCount,
-        { [filename]: timestampKeys[foundTimestamp] },
+        { [filename]: timestampKeys[foundTimestamps[i]] },
       ];
-    } else {
-      filesWithNewWordCount = [];
+      totalWordsWrittenPerDay += timestampKeys[foundTimestamps[i]].diff;
     }
   });
 
@@ -33,8 +46,21 @@
     {#if filesWithNewWordCount.length > 0}
       {#each Object.entries(filesWithNewWordCount) as [_filename, timestampKeys]}
         <h3>{Object.keys(timestampKeys)}</h3>
-        <p>{timestampKeys[Object.keys(timestampKeys)].diff}</p>
+        <p
+          class="{timestampKeys[Object.keys(timestampKeys)].diff > 0 ? 'text-green-700' : 'text-red-700'}"
+        >
+          {timestampKeys[Object.keys(timestampKeys)].diff}
+        </p>
       {/each}
+      <hr class="mb-4" />
+      <p
+        class="{totalWordsWrittenPerDay >= $wordsPerDay ? 'text-green-700' : 'text-red-700'}"
+      >
+        {totalWordsWrittenPerDay}
+        /
+        {$wordsPerDay}
+        words written
+      </p>
     {:else}No file changes found{/if}
   {:else}
     <p>No day selected</p>

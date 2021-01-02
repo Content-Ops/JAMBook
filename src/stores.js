@@ -1,7 +1,11 @@
 import { writable } from 'svelte/store';
+import cookies from 'js-cookie';
 
-export const fileCounts = writable(null);
+let initialWordsPerDay = cookies.get('initialWordsPerDay') || 200;
+let initialDocumentTargetLength =
+  cookies.get('initialDocumentTargetLength') || 1000;
+
 export const selectedDateStr = writable(null);
 export const selectedDate = writable(null);
-export const wordsPerDay = writable(1);
-export const documentTargetLength = writable(200);
+export const wordsPerDay = writable(initialWordsPerDay);
+export const documentTargetLength = writable(initialDocumentTargetLength);

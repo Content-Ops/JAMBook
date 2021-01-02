@@ -1,20 +1,24 @@
 {
-  "2020-10-10-cool-post-copy": {
-    "2021-01-01T10:47:21.973Z": {
-      "diff": 95,
-      "currentWords": 95
+  "cool-post-copy": {
+    "2021-01-02T16:41:48.766Z": {
+      "diff": 279,
+      "currentWords": 279
     }
   },
-  "2020-11-11-cool-post-test": {
-    "2021-01-01T10:47:21.974Z": {
-      "diff": 31,
-      "currentWords": 31
+  "cool-post-test": {
+    "2021-01-02T16:41:48.768Z": {
+      "diff": 41,
+      "currentWords": 41
+    },
+    "2021-01-02T16:46:32.517Z": {
+      "diff": 2,
+      "currentWords": 43
     }
   },
-  "2020-11-11-cool-post": {
-    "2021-01-01T10:47:21.975Z": {
-      "diff": 93,
-      "currentWords": 93
+  "cool-post": {
+    "2021-01-02T16:41:48.773Z": {
+      "diff": 107,
+      "currentWords": 107
     }
   }
 }
