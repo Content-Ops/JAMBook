@@ -1,0 +1,24 @@
+{
+  "cool-post-copy": {
+    "2021-01-02T16:41:48.766Z": {
+      "diff": 279,
+      "currentWords": 279
+    }
+  },
+  "cool-post-test": {
+    "2021-01-02T16:41:48.768Z": {
+      "diff": 41,
+      "currentWords": 41
+    },
+    "2021-01-02T16:46:32.517Z": {
+      "diff": 2,
+      "currentWords": 43
+    }
+  },
+  "cool-post": {
+    "2021-01-02T16:41:48.773Z": {
+      "diff": 107,
+      "currentWords": 107
+    }
+  }
+}
