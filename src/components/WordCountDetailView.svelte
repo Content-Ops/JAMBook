@@ -76,5 +76,8 @@
         {formatPercentage(timestampKeys[Object.keys(timestampKeys)].currentWords / $documentTargetLength)}
       {/each}
     </div>
-  {:else}No files found to display, did you run the word count script?{/if}
+  {:else}
+    No files found to display, did you put your blog posts under `src/posts` and
+    run the `wordCount.js` script?
+  {/if}
 </div>
