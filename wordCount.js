@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
 const readingTime = require('reading-time');
+const execa = require('execa');
 
 const projectRoot = path.join(__dirname);
 
@@ -76,5 +77,12 @@ glob(
         }
       }
     });
+
+    /**
+     * Lint-staged precommit hook doesn't stage file changes that happened through precommit hook itself
+     * Therefore we need to manually run git add -A to ensure that logfile.json gets staged and committed,
+     * otherwise it would be left behind as changed file in git
+     */
+    execa('git', ['add', '-A'], { cwd: __dirname });
   },
 );
