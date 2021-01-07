@@ -1,12 +1,19 @@
-# Content Ops
+# JAMBook
 
-<a href="https://app.netlify.com/start/deploy?repository=https://github.com/Content-Ops/JAMBook" rel="nofollow"><img src="https://camo.githubusercontent.com/417d890ba67c98ad5856b715343a61cdbf07d72b9bd5b79dd45d43de634c29ea/68747470733a2f2f7777772e6e65746c6966792e636f6d2f696d672f6465706c6f792f627574746f6e2e737667" alt="Deploy to Netlify" data-canonical-src="https://www.netlify.com/img/deploy/button.svg" style="max-width:100%;"></a>
+Don't break the chain! :chains:  :writing\_hand: 
 
-Don't break the chain!
+JAMBook is a project for people who want to use GitHub as their primary writing environment. All articles are written as basic markdown files and there is a calendar to help you not break the chain of your daily writing goal. It's deployable to Netlify and the word count function runs as a GitHub action so there is nothing for you to install or run locally.
 
-## Getting started
+## Use
 
-Once you have created a new project from [Content Ops](https://github.com/singularityhacker/Content_Ops), go to the path and install the dependencies:
+1.  Click “Use this template” at the top of this page and name your copy whatever you want.
+2.  Login into [Netlify](https://www.netlify.com/) and click “New site from Git” and select the repo you just created.
+3.  Start created and editing your .md files in the `src/posts` folder
+4.  Every time you commit your changes, the work count script will run and the updated site will be redeployed to Netlify
+
+## Running Locally
+
+You can also run this project locally if you prefer. After cloning the code to your local, go to the path, and install the dependencies:
 
 ```bash
 cd <path-of-project>
@@ -40,7 +47,20 @@ To connect the blog post articles correctly, you have to add frontmatter metadat
 title: 'Example post'
 slug: 'example-post'
 ---
-
 ```
 
-This will make your blog post available under a unique url based on the slug like `/blog/example-post`.
+This will make your blog post available under a unique url based on the slug like: `/blog/example-post`.
+
+## Notes:
+
+The default daily word count and document length goals are set to 200 and 1000 by default but can be adjusted on the metrics page. After adjustment, they will be saved in a cookie. 
+
+The word count script is calculated as a pre-commit if writing locally (this results in a single Netlify build)
+
+If the word count script is run by the GitHub action when writing through the browser (this results in a double-build on Netlify)
+
+## Handy extensions if writing through the browser
+
+*   [Grammarly](https://chrome.google.com/webstore/detail/grammarly-for-chrome/kbfnbcaeplbcioakkpcpgfkobkghlhen?hl=en)
+*   [Speech to text](https://chrome.google.com/webstore/detail/voice-in-voice-typing/pjnefijmagpdjfhhkpljicbbpicelgko?hl=en)
+*   [Rich text](https://chrome.google.com/webstore/detail/github-writer/diilnnhpcdjhhkjcbdljaonhmhapadap?hl=en-US)
