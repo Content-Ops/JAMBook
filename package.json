@@ -1,6 +1,6 @@
 {
-  "name": "content_ops",
-  "description": "",
+  "name": "jambook",
+  "description": "JAMBook is a project for people who want to use GitHub as their primary writing environment.",
   "version": "1.0.0",
   "private": "true",
   "scripts": {

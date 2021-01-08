@@ -10,6 +10,7 @@
 
   let options = {
     dateClick: handleDateClick,
+    timeZone: 'local',
     viewDidMount: () => {
       loading = false;
     },
@@ -33,12 +34,15 @@
 
       for (let index = 0; index < foundTimestamps.length; index++) {
         // Shorten timestamps to YYYY-MM-DD format so they can be merged into one later
-        let shortenedDay = foundTimestamps[index].slice(0, 10);
+        // INFO: causes "off by 1 day" issues
+        // let shortenedDay = foundTimestamps[index].slice(0, 10);
 
         daysWithDiff = [
           ...daysWithDiff,
           {
-            [shortenedDay]: timestampKeys[foundTimestamps[index]].diff,
+            // [shortenedDay]:
+            [foundTimestamps[index]]:
+              timestampKeys[foundTimestamps[index]].diff,
           },
         ];
       }

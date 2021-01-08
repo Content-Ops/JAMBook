@@ -9,7 +9,7 @@ const projectRoot = path.join(__dirname);
 const logFilePath = path.join(projectRoot, 'logfile.json');
 
 glob(
-  'src/posts/*.md',
+  'src/posts/**/*.md',
   { ignore: ['**/node_modules/**', '**/README.md'] },
   function (err, files) {
     if (err) {
@@ -23,7 +23,10 @@ glob(
       const initialWordCount = readingTime(markdownFileContent).words;
 
       const parsedFile = JSON.parse(logFileContent);
-      const fileName = file.replace('src/posts/', '').split('.')[0];
+      let fileInParts = file.split('/');
+      const fileName = file
+        .split('/')
+        [fileInParts.length - 1].replace('.md', '');
 
       const existingFileName = parsedFile[fileName];
 

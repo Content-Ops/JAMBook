@@ -1,15 +1,15 @@
 # JAMBook
 
-Don't break the chain! :chains:  :writing\_hand: 
+Don't break the chain! :chains:  :writing_hand:
 
 JAMBook is a project for people who want to use GitHub as their primary writing environment. All articles are written as basic markdown files and there is a calendar to help you not break the chain of your daily writing goal. It's deployable to Netlify and the word count function runs as a GitHub action so there is nothing for you to install or run locally.
 
 ## Use
 
-1.  Click “Use this template” at the top of this page and name your copy whatever you want.
-2.  Login into [Netlify](https://www.netlify.com/) and click “New site from Git” and select the repo you just created.
-3.  Start created and editing your .md files in the `src/posts` folder
-4.  Every time you commit your changes, the work count script will run and the updated site will be redeployed to Netlify
+1. Click “Use this template” at the top of this page and name your copy whatever you want.
+2. Login into [Netlify](https://www.netlify.com/) and click “New site from Git” and select the repo you just created.
+3. Start created and editing your .md files in the `src/posts` folder
+4. Every time you commit your changes, the work count script will run and the updated site will be redeployed to Netlify
 
 ## Running Locally
 
@@ -47,20 +47,23 @@ To connect the blog post articles correctly, you have to add frontmatter metadat
 title: 'Example post'
 slug: 'example-post'
 ---
+
 ```
 
 This will make your blog post available under a unique url based on the slug like: `/blog/example-post`.
 
 ## Notes:
 
-The default daily word count and document length goals are set to 200 and 1000 by default but can be adjusted on the metrics page. After adjustment, they will be saved in a cookie. 
+The default daily word count and document length goals are set to 200 and 1000 by default but can be adjusted on the metrics page. After adjustment, they will be saved in a cookie.
 
 The word count script is calculated as a pre-commit if writing locally (this results in a single Netlify build)
 
 If the word count script is run by the GitHub action when writing through the browser (this results in a double-build on Netlify)
 
+The single source of truth for the word count changes which are displayed on the UI is the `logfile.json`.
+
 ## Handy extensions if writing through the browser
 
-*   [Grammarly](https://chrome.google.com/webstore/detail/grammarly-for-chrome/kbfnbcaeplbcioakkpcpgfkobkghlhen?hl=en)
-*   [Speech to text](https://chrome.google.com/webstore/detail/voice-in-voice-typing/pjnefijmagpdjfhhkpljicbbpicelgko?hl=en)
-*   [Rich text](https://chrome.google.com/webstore/detail/github-writer/diilnnhpcdjhhkjcbdljaonhmhapadap?hl=en-US)
+- [Grammarly](https://chrome.google.com/webstore/detail/grammarly-for-chrome/kbfnbcaeplbcioakkpcpgfkobkghlhen?hl=en)
+- [Speech to text](https://chrome.google.com/webstore/detail/voice-in-voice-typing/pjnefijmagpdjfhhkpljicbbpicelgko?hl=en)
+- [Rich text](https://chrome.google.com/webstore/detail/github-writer/diilnnhpcdjhhkjcbdljaonhmhapadap?hl=en-US)

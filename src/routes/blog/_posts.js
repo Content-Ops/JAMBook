@@ -1,9 +1,10 @@
 const fs = require('fs');
+const glob = require('glob');
 const frontMatter = require('front-matter');
 const marked = require('marked');
 
-const posts = fs.readdirSync('./src/posts').map((postFilename) => {
-  const postContent = fs.readFileSync(`./src/posts/${postFilename}`, {
+const posts = glob.sync('src/posts/**/*.md').map((postFilename) => {
+  const postContent = fs.readFileSync(postFilename, {
     encoding: 'utf8',
   });
   const postFrontMatter = frontMatter(postContent);

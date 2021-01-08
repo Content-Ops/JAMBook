@@ -45,7 +45,11 @@
 
     {#if filesWithNewWordCount.length > 0}
       {#each Object.entries(filesWithNewWordCount) as [_filename, timestampKeys]}
-        <h3>{Object.keys(timestampKeys)}</h3>
+        <h3>
+          <a href="{`/blog/${Object.keys(timestampKeys)}`}" rel="prefetch">
+            {Object.keys(timestampKeys)}
+          </a>
+        </h3>
         <p
           class="{timestampKeys[Object.keys(timestampKeys)].diff > 0 ? 'text-green-700' : 'text-red-700'}"
         >

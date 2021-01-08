@@ -26,14 +26,14 @@
 
   const handledocumentTargetLengthChange = () => {
     setTimeout(() => {
-      cookies.set('initialDocumentTargetLength', $wordsPerDay);
+      cookies.set('initialDocumentTargetLength', $documentTargetLength);
     }, 1000);
   };
 
   var option = {
     style: 'percent',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
   };
   var formatter = new Intl.NumberFormat('en-US', option);
 
