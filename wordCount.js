@@ -3,6 +3,7 @@ const path = require('path');
 const glob = require('glob');
 const readingTime = require('reading-time');
 const execa = require('execa');
+const { format, zonedTimeToUtc, utcToZonedTime } = require('date-fns-tz');
 
 const projectRoot = path.join(__dirname);
 
@@ -15,6 +16,14 @@ glob(
     if (err) {
       throw new Error(err.message);
     }
+
+    // Guess timezone of user location
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const date = new Date();
+    const localDate = utcToZonedTime(date, tz);
+    const dateWithTimezone = format(localDate, 'yyyy-MM-dd HH:mm:ssXXX', {
+      timeZone: tz,
+    });
 
     files.forEach((file) => {
       const logFileContent = fs.readFileSync(`${logFilePath}`, 'utf8');
@@ -35,7 +44,7 @@ glob(
           `'${fileName}' seems to be a new file, adding to wordCount.js log file...`,
         );
 
-        const newFileTimestamp = new Date().toISOString();
+        const newFileTimestamp = dateWithTimezone;
 
         const newContent = {
           ...parsedFile,
@@ -56,7 +65,7 @@ glob(
 
         const wordCountNew = readingTime(markdownFileContent).words;
 
-        const diffTimestamp = new Date().toISOString();
+        const diffTimestamp = dateWithTimezone;
         const diffInWords = wordCountNew - currentWords;
 
         if (diffInWords !== 0) {

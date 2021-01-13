@@ -10,7 +10,7 @@
 
   let options = {
     dateClick: handleDateClick,
-    timeZone: 'local',
+    timeZone: 'utc',
     viewDidMount: () => {
       loading = false;
     },
