@@ -32,8 +32,16 @@
     }
   });
 
-  $: formattedDate = $selectedDate
-    ? formatDate($selectedDate)
+  const dayWithoutTimezoneOffset = () => {
+    const date = new Date($selectedDateStr);
+    const dateWitoutOffset = new Date(
+      date.valueOf() + date.getTimezoneOffset() * 60 * 1000,
+    );
+    return formatDate(dateWitoutOffset.toISOString());
+  };
+
+  $: formattedDate = $selectedDateStr
+    ? dayWithoutTimezoneOffset()
     : 'No date selected';
 </script>
 
